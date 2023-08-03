@@ -1,0 +1,5 @@
+*venv
+*.pytest_cache
+.vscode
+test.ipynb
+*__pycache__
