@@ -1,0 +1,6 @@
+Flask==2.3.2
+Flask_Caching==2.0.2
+flask_restx==1.1.0
+psycopg2_binary==2.9.6
+pytest==7.4.0
+python-dotenv==1.0.0

@@ -8,7 +8,7 @@ load_dotenv()
 logger = logging.getLogger()
 logger.setLevel("INFO")
 
-mydb = psycopg2.connect(host=os.environ.get("DB_HOST"),port=os.environ.get("DB_PORT"),user=os.environ.get("DB_USER"),password=os.environ.get("DB_PASSWORD"))
+mydb = psycopg2.connect(host=os.environ.get("DB_HOST"),port=os.environ.get("DB_PORT"),dbname=os.environ.get("DB_NAME"),user=os.environ.get("DB_USER"),password=os.environ.get("DB_PASSWORD"))
 cursor = mydb.cursor()  
 class dB_Cursor:
 
@@ -16,18 +16,11 @@ class dB_Cursor:
 
         self.cursor = cursor
 
-# def connect_to_database():
-#     conn = psycopg2.connect(host=os.environ.get("DB_HOST"),
-#                             port=os.environ.get("DB_PORT"), 
-#                             dbname=os.environ.get("DB_NAME"), 
-#                             user=os.environ.get("DB_USER"),
-#                             password=os.environ.get("DB_PASSWORD"))
-#     return conn
     def persist_result(self,results,request_address):
         angle = results["angle"]
-        hour = results["hour"]
-        minute = results["minute"]
-        query = self.create_query_to_insert(angle,hour,minute,request_address)
+        hours = results["hours"]
+        minutes = results["minutes"]
+        query = self.create_query_to_insert(angle,hours,minutes,request_address)
         try:
             self.cursor.execute(query)
 
@@ -35,11 +28,11 @@ class dB_Cursor:
         except:
             logger.warning("Failed on persisting the operation.")
         
-    def create_query_to_insert(self,angle:int,hour:int,minute:int,request_address:str)->str:
+    def create_query_to_insert(self,angle:int,hours:int,minutes:int,request_address:str)->str:
 
         current_datetime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         query = "INSERT INTO requests_archive (angle, clock, request_address, requested_at) "
-        query+=f"VALUES ({angle}, ARRAY[{hour},{minute}],'{request_address}','{current_datetime}');"
+        query+=f"VALUES ({angle}, ARRAY[{hours},{minutes}],'{request_address}','{current_datetime}');"
         
         return query
 
@@ -60,17 +53,4 @@ class dB_Cursor:
         query+= "date_time TIMESTAMP);"
         return query
 
-# def persist_result(angle,hour,minute,request_address):
-#     conn = connect_to_database()
-#     cursor = conn.cursor()
-#     query = create_query_to_insert(angle,hour,minute,request_address)
-#     try:
-#         cursor.execute(query)
-#         conn.commit()
-#         logger.info("Operation persisted succesfully.")
-#     except:
-#         logger.warning("Failed on persisting the operation.")
-#     finally:
-#         cursor.close()
-#     conn.close()
 
