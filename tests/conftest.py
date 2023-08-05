@@ -3,7 +3,7 @@ import sys
 sys.path.append('.')
 import pytest
 from dotenv import load_dotenv
-from run import app
+from app import app
 from unittest import mock
 from db.connector import dB_Cursor
 load_dotenv()
