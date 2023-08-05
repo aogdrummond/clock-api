@@ -1,6 +1,6 @@
-# Cryptocurrency Key Management Project
+# Clock Api Project
 
-This project aims to provide functionality for managing cryptocurrency keys, including generating addresses, persisting keys, and retrieving keys from a database or an S3 bucket. It consists of several scripts that can be used independently or integrated into a larger application.
+This project aims to provide a functionality to calculate the smallest angle between the two clock arrows, given the values of hour and minute represented. The interaction with the application is done via GET request, still providing the possibility of persisting operations recordings in a local dB.
 
 ## Prerequisites
 
