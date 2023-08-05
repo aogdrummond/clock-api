@@ -1,0 +1,27 @@
+# services:
+#   clock-api:
+#     container_name: clock-api
+#     image: clock-api
+#     build: .
+#     ports:
+#       - "80:80"
+#     environment:
+#       - DATABASE_URL=postgresql://postgres:postgres@db:5434/postgres
+#     depends_on:
+#       - db
+  
+#   db:
+#     container_name: db
+#     image: postgres:12
+#     ports:
+#       - "5434:5434"
+#     environment:
+#       - POSTGRES_PASSWORD=test_db
+#       - POSTGRES_USER=test_user
+#       - POSTGRES_DB=password
+#     volumes:
+#       - pgdata:/var/lib/postgresql/data
+
+
+# volumes:
+#   pgdata: {}
