@@ -13,6 +13,8 @@ This project aims to provide a functionality to calculate the smallest angle bet
 ```
 │
 ├─ app.py: application entrypoint
+|
+├─ api_procedures.py: API functionalities
 │
 │        ┌─clock_calculator.py: business rules for obtaining final result
 ├─ src  ─┤
@@ -32,8 +34,11 @@ This project aims to provide a functionality to calculate the smallest angle bet
 │
 ├─ README.md:  readme file
 │
-└─ requirements.txt: Definition of dependencies
-
+├─ requirements.txt: Definition of dependencies
+|
+├─ logs ── logging_config.py : Sets configuration for the logging tool
+|
+└─.env: Stores environment variables
 ```
 
 ## Installation

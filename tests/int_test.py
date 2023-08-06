@@ -4,7 +4,7 @@ sys.path.append('.')
 import pytest
 import json
 from unittest import mock
-#Still should be run with the API on. Implement mocking?
+
 class Test_API:
     def test_degree_calculator_valid_input(self,client):
         response = client.get("/vn/rest/calculate-clock/6/30")

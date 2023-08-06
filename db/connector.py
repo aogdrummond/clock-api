@@ -3,8 +3,7 @@ import logging
 import psycopg2
 from datetime import datetime
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+logger = logging.getLogger("appLogger")
 
 mydb = psycopg2.connect(host=os.environ.get("DB_HOST"),
                         port=os.environ.get("DB_PORT"),
@@ -50,8 +49,7 @@ class dB_Cursor:
 
     def query_to_create_table(self,table_name):
 
-        query = f"CREATE TABLE {table_name}(id SERIAL PRIMARY KEY, angle INTEGER, "
-        query =  "clock integer[], requested_at TIMESTAMP, request_address VARCHAR(155));"
+        query = f"CREATE TABLE IF NOT EXISTS {table_name}(id SERIAL PRIMARY KEY, angle INTEGER, clock INTEGER[], requested_at TIMESTAMP, request_address VARCHAR(155));"
         
         return query
     

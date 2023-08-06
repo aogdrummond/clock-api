@@ -1,6 +1,6 @@
 import logging
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+logger = logging.getLogger('appLogger')
+
 
 def validate_parameters(hours: str, minutes: str) -> dict:
     """
